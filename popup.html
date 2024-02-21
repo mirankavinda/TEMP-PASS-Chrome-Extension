@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/app.css">
+    <title>TEMPPASS - Temporary Password Generation</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="lock-logo-div">  
+            <img src="./assets/icon-lock.png" alt="icon of a lock">
+        </div>
+
+        <div class="title-main-div">
+            <span class="temp">TEMP</span><span class="pass">PASS</span>
+        </div>  
+
+        <!-- settings container -->
+        <section class="settings-container">
+            <div class="setting">
+                <label for="includeDigits">
+                    <span>Include digits</span>
+                    <span></span>
+                </label>
+                <input type="checkbox" id="includeDigits" checked>
+            </div>
+            <div class="setting">
+                <label for="specialChar">
+                    <span>Include special characters</span>
+                    <span></span>
+                </label>
+                <input type="checkbox" id="specialChar" checked>
+            </div>
+            <div class="setting">
+                <label for="letterMix">
+                    <span>lowercase and uppercase letters</span>
+                    <span>note that lowercase letters will always be used</span>
+                </label>
+                <input type="checkbox" id="letterMix" checked>
+            </div>
+        </section>
+
+        <!-- character lenght-->
+        <section class="character-lenght">
+            <p>Your password will be <span id="charLengthSpan">15</span> characters long</p>
+            <p>move the slider to adjust the lenght of your password</p>
+            <input type="range" id="characterLengthSlider" min="10" max="75" value="15">
+        </section>
+
+        <!-- generated password -->
+        <section class="generated-password">
+            <input type="text" id="generatedPassword" spellcheck="false">
+            <button class="copy-password" id="copyPassword">copy</button>
+            <div class="confirmation" id="confirmation">
+                <p>password copied!</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="./scripts/app.js"></script>
+</body>
+</html>

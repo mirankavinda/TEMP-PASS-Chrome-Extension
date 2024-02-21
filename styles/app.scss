@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+$primary: #22242B;
+$secondary: #00C497;
+$white: #fff;
+$text-dark: #616b74;
+$text-darker: #465059;
+$text-light: #8E9BA7;
+
+$light-gray: #CCCFD3;
+$lighter-gray: #F5F5F5;
+
+$logo-size: 50px;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: $primary;
+    color: $text-dark;
+    padding: 3rem .5rem .5rem;
+}
+
+.container {
+    width: 280px;
+    background-color: $white;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem 1rem 1.5rem;
+    position: relative;
+}
+
+.lock-logo-div {
+    position: absolute;
+    //top: -30px;
+    top: calc($logo-size / -2);
+    left: 1rem;
+    height: $logo-size;
+    width: $logo-size;
+    background-color: $white;
+    border: 6px solid $primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    img {
+        width: .9rem;
+    }
+}
+
+// Title of extension
+.title-main-div {
+    position: absolute;
+    top: -2rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+// Apply the colors to specific elements
+.title-main-div .temp {
+    color: #FFFFFF;
+}
+
+.title-main-div .pass {
+    color: #00C497;
+}
+
+section.settings-container {
+    .setting {
+        display: flex;
+        align-items: center;
+        margin: 1.5rem auto;
+        label {
+            width: 80%;
+            padding-right: 1rem;
+            span {
+                display: block;
+                &:first-of-type {
+                    font-weight: 500;
+                    font-size: .8rem;
+                }
+                &:last-of-type {
+                    font-weight: 300;
+                    color: darken($text-light, 15%);
+                    font-size: .7rem;
+                    margin-top: .15rem;
+                }
+            }
+        }
+        input[type='checkbox']{
+            appearance: none;
+            -webkit-appearance: none;
+            position: relative;
+            width: 40px;
+            min-width: 40px;
+            background-color: $light-gray;
+            height: 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color .3s ease;
+            &::after {
+                content: '';
+                position: absolute;
+                transform: translate(-50%, -50%);
+                width: 17px;
+                height: 17px;
+                background-color: white;
+                border-radius: 50%;
+                top: 50%;
+                left: 30%;
+                transition: all .3s ease;
+            }
+            &:checked{
+                background-color: $secondary;
+                &::after {
+                    left: 70%;
+                }
+            }
+        }
+    }
+}
+
+section.character-lenght {
+    margin: 3rem auto 2rem;
+    text-align:center;
+    p:first-of-type {
+        font-weight: 500;
+        font-size: .8rem;
+        span {
+            color: $secondary;
+            font-size: .9rem;
+        }
+    }
+    p:last-of-type {
+        margin: .5rem auto 1 rem;
+        font-size: .6rem;
+        color: $text-light;
+    }
+    input[type='range'] {
+        -webkit-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        width: 100%;
+        outline: none;
+        border-radius: 2rem;
+        &::-webkit-slider-runnable-track {
+            background-color: $light-gray;
+            height: 0.15rem;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top:  -7px;
+            background-color: $secondary;
+            height: 1rem;
+            width: 1rem;
+            border-radius: 50%;
+        }
+        &:focus::-webkit-slider-thumb {
+            border: 1px soild #eee;
+            outline: 3px solid #eee;
+            outline-offset: 0.125rem;
+        }
+    }
+}
+
+section.generated-password {
+    position: relative;
+    display: flex;
+    align-items: center;
+    input, button {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        height: 3rem;
+    }
+    input {
+        width: 100%;
+        border-width: .5rem 0 0 .5rem;
+        border: 1px solid $light-gray;
+        border-right: none;
+        background-color: $lighter-gray;
+        padding: .5rem .5rem .5rem 1rem;
+        font-size: .8rem;
+        color: $text-darker;
+        outline: none;
+    }
+    button {
+        height: 3rem;
+        width: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $light-gray;
+        border-radius: 0 .5rem .5rem 0;
+        background-color: transparent;
+        cursor: pointer;
+        color: $text-darker;
+        transition: background-color .3s ease;
+        &:hover {
+            background-color: $light-gray;
+        }
+    }
+    .confirmation {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 100%;
+        width: 100%;
+        background-color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: .8rem;
+        font-weight: 500;
+        pointer-events: none;
+        opacity: 0;
+        transition: all .1s ease;
+        p {
+            transform: scale(.2);
+            transition: transform .3s ease;
+        }
+        &.active {
+            pointer-events: all;
+            opacity: 1;
+            p{
+                transform: scale(1.1);
+            }
+        }
+    }
+}
